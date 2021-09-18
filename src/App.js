@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Home from './pages/Home';
+import Home from './screens/HomeScreen';
 
 function App() {
   return <Home />;
