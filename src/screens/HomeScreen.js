@@ -1,5 +1,6 @@
 import React from 'react'
 import './screens.css'
+import SideMenu from '../components/SideMenu'
 const HomeScreen = () => {
 
     return (
@@ -11,7 +12,7 @@ const HomeScreen = () => {
                 
                 <div className='wrapper'>
                     <div className='left-section'>
-
+                      <SideMenu/>
                     </div>
                     <div className="middle-right-section">
 
