@@ -17,19 +17,31 @@ File containing all the basic CSS classes used in displaying the general compone
 
 li {
   width:100%;
-  cursor: pointer;
   margin:0.35rem 0;
   display:flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
- 
+  margin:1rem 0;
+  border-bottom: 1px solid white;
+  padding-left: .5rem;
+  padding:.75rem 0 .75rem .5rem;
+}
+
+.nav-li {
+  cursor: pointer;
+  border-bottom: none;
+  padding:0;
+  margin:0;
 }
 
 ul {
   list-style-type:none;
   padding:0;
   padding-right: .5rem;
+  overflow:'auto';
+  width:'100%'
+
 }
 
 li #icon {
@@ -50,3 +62,20 @@ li #title {
   left: 0;
 }
 
+
+.sidebar {
+  overflow: hidden;
+  overflow-y:scroll;
+}
+
+
+.timestamp {
+  text-decoration: underline;
+  text-decoration-color: #3563c9;
+  font-weight: 500;
+ 
+}
+
+.timestamp:hover {
+  cursor:pointer;
+}
