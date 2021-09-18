@@ -1,15 +1,10 @@
 import './App.css';
 import React from 'react'
-import {
-   Router,
-   Route, 
-  } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
+
 import HomeScreen from "./screens/HomeScreen" 
 import MainScreen from "./screens/MainScreen"
 
 function App() {
-  const browserHistory = createBrowserHistory()
   return (
     <div className="App">
       <Router history={browserHistory}>
