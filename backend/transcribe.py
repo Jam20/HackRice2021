@@ -22,5 +22,6 @@ def transcribe_video(input, uploaded=False):
     # gets the transcript and writes it to the disk
     transcript = get_transcription(GCS_URI)
     # write_2_disk(TRANSCRIPT_OUTPUT, transcript)
-    delete_temp([AUDIO_OUTPUT])
+    if not uploaded:
+        delete_temp([AUDIO_OUTPUT])
     return transcript
