@@ -17,6 +17,6 @@ def upload_video():
         uploaded_file.save(uploaded_file.filename)
     uploaded = request.form.get('uploaded') and request.form.get('uploaded') == "True"
     return {"transcript":transcribe_video(uploaded_file.filename, uploaded)}
-    return {}
+    return {}   
 
 app.run("localhost", 3000, debug=True)

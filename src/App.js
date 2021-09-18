@@ -1,11 +1,5 @@
 import './App.css';
-import React from 'react'
-import {
-   Router,
-   Route, 
-  } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
-import HomeScreen from "./screens/HomeScreen" 
+import Home from './screens/HomeScreen';
 
 function App() {
   const browserHistory = createBrowserHistory()
