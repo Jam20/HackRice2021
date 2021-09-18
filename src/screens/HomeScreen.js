@@ -1,7 +1,25 @@
-import React from 'react';
+import React from 'react'
+import './screens.css'
+const HomeScreen = () => {
 
-function Home() {
-  return <h1>Home</h1>;
+    return (
+        <>
+         <div className='top-bar'>
+            <text class="title-text">Lorem Ipsum</text>
+            </div>
+            <div className='container'>
+                
+                <div className='wrapper'>
+                    <div className='left-section'>
+
+                    </div>
+                    <div className="middle-right-section">
+
+                    </div>
+                </div>
+            </div>
+        </>
+    )
 }
 
-export default Home;
+export default HomeScreen
