@@ -9,8 +9,11 @@ def index():
 
 @app.route("/upload_video", methods=['POST'])
 def upload_video():
+    if 'file' not in request.files:
+        return {"error":"No file detected"}
     uploaded_file = request.files['file']
     if uploaded_file.filename != '':
+        print("Saving file...")
         uploaded_file.save(uploaded_file.filename)
     uploaded = request.form.get('uploaded') and request.form.get('uploaded') == "True"
     return {"transcript":transcribe_video(uploaded_file.filename, uploaded)}

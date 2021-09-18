@@ -25,3 +25,5 @@ package-lock.json
 /venv
 /.vscode
 backend/__pycache__
+backend/.env
+backend/key.json
