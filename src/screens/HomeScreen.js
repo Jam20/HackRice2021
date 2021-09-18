@@ -4,6 +4,7 @@ import cube from '../assets/cube.png'
 import { css } from "@emotion/react";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import TextLoop from "react-text-loop";
+import { useHistory } from 'react-router-dom';
 
 const override = css`
   display: block;
@@ -19,9 +20,10 @@ const phrases = [
   "Solving world peace...",
   "Maybe this will work..."
 ]
-function HomeScreen() {
+function HomeScreen(props) {
   const inputFile = useRef(null);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const history = useHistory();
   const onChangeFile = async (e) => {
     const file = e.target.files[0]
     setLoading(true)
@@ -32,6 +34,7 @@ function HomeScreen() {
       body: formData,
     };
     let response = await fetch('http://localhost:5000/upload_video', options);
+    props.onChangeFile(response)
     setLoading(false)
   }
 

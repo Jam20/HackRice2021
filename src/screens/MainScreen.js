@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom'
 const MainScreen = (props) => {
     const history = useHistory()
     const BUTTON_HEIGHT = 37.5
+    
     return (
         <>
          <div className='top-bar'>
