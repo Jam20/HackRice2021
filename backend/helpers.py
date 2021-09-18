@@ -40,8 +40,9 @@ def get_transcription(uri):
     print(response)
 
     # map the raw response to the sentence data type
-    return map(lambda result: Sentence(result.alternatives[0].transcript, result.alternatives[0].words[0].start_time, result.alternatives[0].words[-1].end_time), response.results)
-
+    return [Sentence(result.alternatives[0].transcript, 
+        result.alternatives[0].words[0].start_time, 
+        result.alternatives[0].words[-1].end_time) for result in response.results]
 
 # write a file to the disk
 def write_2_disk(file_name, data):
