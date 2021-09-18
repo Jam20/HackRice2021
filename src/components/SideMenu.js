@@ -1,32 +1,45 @@
 // Styles and imports were ommited
+import Grid from '@mui/material/Grid'
+import Drawer from '@mui/material/Drawer'
+import Avatar from '@mui/material/Avatar'
+import List from '@mui/material/List'
+// import Avatar from '@mui/material/Avatar'
+// import Avatar from '@mui/material/Avatar'
+// import Avatar from '@mui/material/Avatar'
+
 function SideMenu() {
-    const classes = useStyles();
+    const classes = {}
   
     return (
       <Drawer
         open={true}
         variant='permanent'
-        anchor='left'
-        className={classes.drawer}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
       >
-        <Grid container justify='center' alignItems='center'>
+        {/* <Grid 
+          container 
+          justify='center' 
+          alignItems='center'  
+          wrap='wrap'
+          container={true} 
+          sx={{
+            width:40,
+            backgroundColor:'red'
+          }}
+          >
           <Avatar
             src='https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg'
             className={classes.bigAvatar}
           />
-        </Grid>
+        </Grid> */}
         <List>
-          {['Profile', 'Sign Out'].map((text, index) => (
+          {/* {['Profile', 'Sign Out'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <AccountCircle /> : <ExitToApp />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
-          ))}
+          ))} */}
         </List>
       </Drawer>
     );
