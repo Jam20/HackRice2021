@@ -37,7 +37,7 @@ function HomeScreen(props) {
       body: formData,
     };
     //awaits a response from the python server
-    let response = await fetch('http://localhost:5000/upload_video', options);
+    let response = //await fetch('http://localhost:5000/upload_video', options);
 
     //uses the prop function to send the response to the main page
     props.onChangeFile(response)

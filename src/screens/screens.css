@@ -1,70 +1,67 @@
 .wrapper {
-    margin-right: auto; 
-    margin-left:  auto; 
-    width:100%;
-    border: solid red 1px;
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  border: solid red 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-  }
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  padding-right: 10px;
+  border: solid red 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: left;
+}
 
-  .container {
-    margin-right: auto; 
-    margin-left:  auto; 
-    width:100%;
-    padding-right: 10px; 
-    border: solid red 1px;
-    display:flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: left;
+.left-section {
+  max-width: 320px;
+  border: solid green 1px;
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+  height: 90vh;
+  overflow: hidden;
+  left: 0;
+  margin-right: auto;
+  max-width: 80px;
+}
 
-  }
+.middle-right-section {
+  border: solid purple 5px;
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+  height: 90vh;
+  width: 100%;
+}
 
-  .left-section {
-    max-width: 320px;
-    border: solid green 1px;
-    display:flex;
-    flex-direction: column;
-    flex:.5;
-    height:90vh;
-    overflow: hidden;
-    left:0;
-    margin-right: auto;
-    max-width: 80px;
-  }
+.top-bar {
+  padding: 1rem 0;
+  width: 100%;
+  background-color: #3563c9;
+  color: white;
+  display: flex;
+  flex-direction: row;
+}
 
-  .middle-right-section{
-     border: solid purple 5px;
-     display:flex;
-     flex-direction: column;
-     flex:5;
-     height:90vh;
-     width:100%    
-  }
+.title-text {
+  font-size: 2.75rem;
+  font-weight: 100;
+  letter-spacing: 1px;
+  text-align: right;
+  margin-left: 3rem;
+}
 
-  .top-bar {
-      padding: 1rem 0;
-      width:100%;
-      background-color: #010101;
-      color:white;
-      display:flex;
-      flex-direction: row;
-  }
-
-  .title-text {
-      font-size: 2.75rem;
-      font-weight: 100;
-      letter-spacing: 1px;
-      text-align: right;
-      margin-left: 3rem;
-  }
-
-  .button-text {
-    font-size: .8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color:black;
-  }
-
+.button-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: black;
+}

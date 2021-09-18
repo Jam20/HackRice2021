@@ -9,6 +9,7 @@ const MainScreen = (props) => {
     const history = useHistory()
     const BUTTON_HEIGHT = 37.5
     /**prop analysis will give the current analysis to be displayed on the page. follows same format as python analysis object */
+
     return (
         <>
          <div className='top-bar'>
@@ -17,7 +18,7 @@ const MainScreen = (props) => {
             </text>
             <Button
               sx={{
-                background:'#72EFA3',
+                background:'#1db954',
                 padding:1,
                 paddingRight:6,
                 paddingLeft:6,
@@ -28,13 +29,13 @@ const MainScreen = (props) => {
                 marginBottom:'auto',
                 '&:hover': {
                   opacity:.7,
-                  background:'#72EFA3',
+                  background:'#1db954',
                 },
               }}
               onClick={() => history.push('/home')}
             >
               <text className={'button-text'}>
-                Lorem Ipsum
+                Export
               </text>
             </Button>
           </div>

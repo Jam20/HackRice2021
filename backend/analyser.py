@@ -2,6 +2,7 @@ from azure.ai.textanalytics import TextAnalyticsClient, ExtractSummaryAction
 from azure.core.credentials import AzureKeyCredential
 from dotenv import load_dotenv
 import os
+import jsonpickle
 
 # Class used to define the basic building block of a transcription
 
@@ -54,9 +55,8 @@ class Analysis:
             self.summary = self.summary + "\n" + text_summarization(
                 documents_to_analyze, client)
 
+
 # authenticates the application with Azure
-
-
 def authenticate_client(key, endpoint):
     ta_credential = AzureKeyCredential(key)
     text_analytics_client = TextAnalyticsClient(
@@ -122,4 +122,6 @@ def extract_key_phrases(documents, client):
 with open("message.txt") as file:
     sentences = map(lambda text: Sentence(text, 0, 0), file.readlines())
     analysis = Analysis(sentences)
-    print(analysis.entities)
+    with open("message.json", "w") as jsonFile:
+        jsonFile.write(
+            str(jsonpickle.encode(analysis, unpicklable=False)))
