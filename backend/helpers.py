@@ -29,7 +29,7 @@ def get_transcription(uri):
 
     print("Transcribing audio...")
     response = operation.result()
-    print(response.alternatives)
+    print(response)
     return " ".join([result.alternatives[0].transcript for result in response.results])
 
 def write_2_disk(file_name, data):
