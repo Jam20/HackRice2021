@@ -24,3 +24,4 @@ yarn-error.log*
 package-lock.json
 /venv
 /.vscode
+backend/__pycache__
