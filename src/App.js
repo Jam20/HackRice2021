@@ -2,11 +2,21 @@ import './App.css';
 import React from 'react'
 
 import HomeScreen from "./screens/HomeScreen" 
-
+import MainScreen from "./screens/MainScreen"
 
 function App() {
   return (
-      <HomeScreen/>
+    <div className="App">
+      <Router history={browserHistory}>
+        <Route exact path='/' component={HomeScreen}/>
+        <Route exact path='/home' component={HomeScreen}/>
+        <Route exact path='/main' component={MainScreen}/>
+        {/* <Routes>
+        <Route exact path='/' component={HomeScreen}/>
+        <Route exact path='/home' component={HomeScreen}/>  
+        </Routes> */}
+      </Router>
+    </div>
   );
 }
 
