@@ -3,7 +3,6 @@ from transcribe import transcribe_video
 from analyser import Analysis
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     return "Hello World"
@@ -24,7 +23,7 @@ def upload_video():
     # transcribe and the perform analysis on the uploaded file
     transcript = transcribe_video(uploaded_file.filename, uploaded)
     analysis = Analysis(transcript)
-    return {"analysis": analysis}
+    return {"analysis": analysis.get_json()}
 
 
 app.run("localhost", 5000, debug=True)

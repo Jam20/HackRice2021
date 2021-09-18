@@ -37,12 +37,11 @@ def get_transcription(uri):
 
     print("Transcribing audio...")
     response = operation.result()
-    print(response)
 
     # map the raw response to the sentence data type
     return [Sentence(result.alternatives[0].transcript, 
-        result.alternatives[0].words[0].start_time, 
-        result.alternatives[0].words[-1].end_time) for result in response.results]
+        result.alternatives[0].words[0].start_time.total_seconds(), 
+        result.alternatives[0].words[-1].end_time.total_seconds()).get_json() for result in response.results]
 
 # write a file to the disk
 def write_2_disk(file_name, data):

@@ -7,15 +7,21 @@ import jsonpickle
 # Class used to define the basic building block of a transcription
 
 
-class Sentence(object):
+class Sentence:
     def __init__(self, text, startTime, endTime):
         self.text = text
         self.startTime = startTime
         self.endTime = endTime
+    def get_json(self):
+        return {
+            'text':self.text,
+            'startTime':self.startTime,
+            'endTime':self.endTime
+        }
 
 
 # Class used to cover all the details of setting up and running a text analysis on a transcript
-class Analysis(object):
+class Analysis:
     def __init__(self, sentences):
         # Load client environement variables and authenticate the client
         load_dotenv()
@@ -29,12 +35,12 @@ class Analysis(object):
 
         for sentence in sentences:
             # Azure requires that each document be under 5120 charecters
-            if len(current_document + sentence.text) > 5000:
+            if len(current_document + sentence["text"]) > 5000:
                 # add the completed document to the list of documents to process
                 output_documents.append(current_document)
-                current_document = sentence.text  # reset current document
+                current_document = sentence["text"]  # reset current document
             else:
-                current_document = current_document + sentence.text
+                current_document = current_document + sentence["text"]
         output_documents.append(current_document)
 
         self.key_phrases = []
@@ -42,7 +48,7 @@ class Analysis(object):
         self.summary = ""
 
         # loop through each set of 5 documents as Azure only allows 5 documents per batch
-        for i in range(0, int(len(output_documents)/5)):
+        for i in range(len(output_documents)//5):
             # Get a slice of the documents array from 0..5, 5..10
             documents_to_analyze = output_documents[i*5:(i+5)]
 
@@ -53,6 +59,13 @@ class Analysis(object):
             self.summary = self.summary + "\n" + text_summarization(
                 documents_to_analyze, client)
         self.sentences = sentences
+    def get_json(self):
+        return {
+            'sentences': self.sentences,
+            'key_phrases': self.key_phrases,
+            'entities': self.entities,
+            'summary': self.summary,
+        }
 
 
 # authenticates the application with Azure
@@ -116,11 +129,3 @@ def extract_key_phrases(documents, client):
             return response.error
     except Exception as err:
         print("Encountered exception: {}".format(err))
-
-
-with open("message.txt") as file:
-    sentences = [Sentence(text, 0, 0) for text in file.readlines()]
-    analysis = Analysis(sentences)
-    with open("message.json", "w") as jsonFile:
-        jsonFile.write(
-            str(jsonpickle.encode(analysis, unpicklable=False)))
