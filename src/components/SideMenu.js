@@ -3,27 +3,49 @@ import Grid from '@mui/material/Grid'
 import Drawer from '@mui/material/Drawer'
 import Avatar from '@mui/material/Avatar'
 import List from '@mui/material/List'
-import React, {useState} from 'react';
-import { SideBarData, SideBarNav } from "./SideBarData"
+import React, { useState, useEffect } from 'react';
+import { SideBarData, SideBarNav, message } from "./SideBarData"
 // import Avatar from '@mui/material/Avatar'
 // import Avatar from '@mui/material/Avatar'
 // import Avatar from '@mui/material/Avatar'
 import { useHistory } from 'react-router-dom'
 import './components.css'
-
+import MessageIcon from '@mui/icons-material/Message';
 const SideMenu = () => {
     const history = useHistory()
     const classes = {}
     const [sidebar, setSidebar] = useState(true)
-    const pressSideBar = () =>{
-      setSidebar(!sidebar)
+    const [filteredMessages, setFilteredMessage] = useState(
+      [
+        {
+          message:'',
+          startTime:"",
+          endTime:'',
+        }
+      ]
+    )
+   
+    const filter = () => {
+      let output = []
+      for (let sentence of message.sentences) {
+        if (sentence.text !== '\n' && sentence.text[0] !=='[' && sentence.text[sentence.text.length-2] !==']') {
+          console.log(sentence.text[sentence.text.length])
+          output.push(sentence)
+        }
+      }
+      return output
     }
+
+    useEffect (()=>{
+      setFilteredMessage(filter())
+    }, [])
+
     return (
-      <div className="Sidebar" >
-        <div style={{backgroundColor:'#249F77', margin:0, paddingTop:15, paddingBottom:15}}>
+      <div className="sidebar" >
+        {/* <div style={{backgroundColor:'#249F77', margin:0, paddingTop:15, paddingBottom:15}}>
           {SideBarNav.map((v, k)=>{
             return (
-              <li key={k} onClick={() => history.push(v.path)}>
+              <li key={k} onClick={() => history.push(v.path)} className="nav-li">
                 <div 
                  id='icon'
                  >
@@ -41,22 +63,65 @@ const SideMenu = () => {
               </li>
             )
           })}
-          </div>
+        </div> */}
+
+        <div style={{backgroundColor:'#3563C9', margin:0, paddingTop:15, paddingBottom:15}}> 
+            <li className="nav-li">
+              <div 
+                id='icon'
+                >
+                <MessageIcon
+                  sx={{
+                    color:'white'
+                  }}
+                />
+              </div>
+              { " " }
+              <text
+                style={{
+                  color:'white'
+                }}
+                id='title'
+                >
+                Message
+              </text>
+
+              <text
+                style={{
+                  color:'white'
+                }}
+                id='title'
+                >
+                Timestamp
+              </text>
+            </li>       
+        </div>
+
         <ul>
-          {SideBarData.map((v, k)=>{
+          {filteredMessages.map((v, k)=>{
+            console.log(v)
             return (
-              <li key={k} onClick={() => history.push(v.path)}>
-                <div id='icon'>
-                  {v.icon}
-                </div>
+              <li key={k}>
                 { " " }
                 <text
                   style={{
-                    color:'white'
+                    color:'white',
+                    textAlign:'center'
                   }}
                   id='title'
                   >
-                  {v.title}
+                  {v.text}
+                </text>
+                <text
+                  style={{
+                    color:'#3563C9',
+                    marginBottom:50,
+                    underlineColor:'#3563C9'
+                  }}
+                  id='title'
+                  className="timestamp"
+                  >
+                  {v.startTime + "-" + v.endTime}
                 </text>
               </li>
             )

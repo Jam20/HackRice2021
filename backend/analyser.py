@@ -119,7 +119,7 @@ def extract_key_phrases(documents, client):
 
 
 with open("message.txt") as file:
-    sentences = list(map(lambda text: Sentence(text, 0, 0), file.readlines()))
+    sentences = [Sentence(text, 0, 0) for text in file.readlines()]
     analysis = Analysis(sentences)
     with open("message.json", "w") as jsonFile:
         jsonFile.write(
