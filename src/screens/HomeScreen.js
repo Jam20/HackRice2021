@@ -64,8 +64,8 @@ function HomeScreen(props) {
       }}
       className="container"
     >
-      <Dialog onClose={handleClose} open={open} maxWidth="lg">
-        <div className="dialogBox">
+      <Dialog onClose={handleClose} open={open} maxWidth="lg" className='dialog-fade-in'>
+        <div>
           <DialogTitle className="dialogTitle">UploadFile</DialogTitle>
           <DropzoneArea onChange={onChangeFile} />
         </div>
@@ -73,7 +73,13 @@ function HomeScreen(props) {
 
       <img
         src={cube}
-        style={{ position: "absolute", zIndex: 1, width: "100vw", bottom: 0 }}
+        style={{ 
+          position: "absolute",
+          zIndex: 1,
+          width: "100vw",
+          bottom: 0
+         }}
+         className={ 'img-pop-in' }
       />
       <p
         style={{
@@ -84,10 +90,17 @@ function HomeScreen(props) {
           fontFamily: "barlow",
           zIndex: 2,
         }}
+        className='fade-in'
       >
         Summarizer
       </p>
-      <p style={{ color: "white", fontFamily: "barlow", zIndex: 2 }}>
+      <p style={{ 
+        color: "white",
+        fontFamily: "barlow",
+        zIndex: 2
+       }}
+      className='fade-in'
+      >
         Give your ears a break
       </p>
       {loading ? (
@@ -123,6 +136,7 @@ function HomeScreen(props) {
           onClick={() => {
             setOpen(true);
           }}
+          className='fade-in'
         >
           <div
             style={{
