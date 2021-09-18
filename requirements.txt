@@ -1,4 +1,5 @@
 astroid==2.8.0
+autopep8==1.5.7
 azure-ai-textanalytics==5.2.0b1
 azure-common==1.1.27
 azure-core==1.18.0
@@ -7,7 +8,9 @@ cachetools==4.2.2
 certifi==2021.5.30
 cffi==1.14.6
 charset-normalizer==2.0.6
+click==8.0.1
 decorator==4.4.2
+Flask==2.0.1
 google==3.0.0
 google-api-core==2.0.1
 google-auth==2.1.0
@@ -24,8 +27,11 @@ imageio==2.9.0
 imageio-ffmpeg==0.4.5
 isodate==0.6.0
 isort==5.9.3
+itsdangerous==2.0.1
+Jinja2==3.0.1
 lazy-object-proxy==1.6.0
 libcst==0.3.20
+MarkupSafe==2.0.1
 mccabe==0.6.1
 moviepy==1.0.3
 msrest==0.6.21
@@ -40,6 +46,7 @@ proto-plus==1.19.0
 protobuf==3.18.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
+pycodestyle==2.7.0
 pycparser==2.20
 pylint==2.11.1
 pyparsing==2.4.7
@@ -47,6 +54,7 @@ python-dotenv==0.19.0
 PyYAML==5.4.1
 requests==2.26.0
 requests-oauthlib==1.3.0
+rope==0.20.0
 rsa==4.7.2
 six==1.16.0
 soupsieve==2.2.1
@@ -55,4 +63,5 @@ tqdm==4.62.2
 typing-extensions==3.10.0.2
 typing-inspect==0.7.1
 urllib3==1.26.6
+Werkzeug==2.0.1
 wrapt==1.12.1
