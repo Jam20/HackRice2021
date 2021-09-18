@@ -1,12 +1,16 @@
+/**
+File containing all the basic CSS classes used in displaying the general components of the project
+**/
+
 .info-container {
-    margin:auto;
-    width:85%;
-    padding-right: 10px; 
-    display:flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: left;
-    min-height: 525px;
-    background: #010101;
-    border-radius: .75rem;
-  }
+  margin: auto;
+  width: 85%;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: left;
+  min-height: 525px;
+  background: #010101;
+  border-radius: 0.75rem;
+}

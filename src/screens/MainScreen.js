@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom'
 const MainScreen = (props) => {
     const history = useHistory()
     const BUTTON_HEIGHT = 37.5
-    
+    /**prop analysis will give the current analysis to be displayed on the page. follows same format as python analysis object */
     return (
         <>
          <div className='top-bar'>

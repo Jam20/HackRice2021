@@ -22,22 +22,29 @@ const phrases = [
 ]
 function HomeScreen(props) {
   const inputFile = useRef(null);
-  const [loading, setLoading] = useState(false)
-  const history = useHistory();
+  const [loading, setLoading] = useState(false) //Sets the page to initially not be loading
+  const history = useHistory(); 
+
+  //Function which runs when the uploaded file changes
   const onChangeFile = async (e) => {
     const file = e.target.files[0]
     setLoading(true)
+    //format the file to the post request
     const formData = new FormData();
     formData.append('file', file);
     const options = {
       method: 'POST',
       body: formData,
     };
+    //awaits a response from the python server
     let response = await fetch('http://localhost:5000/upload_video', options);
+
+    //uses the prop function to send the response to the main page
     props.onChangeFile(response)
     setLoading(false)
   }
 
+  //Returns the generalized HTML output of the component
   return (
     <div style={{
       display: 'flex',

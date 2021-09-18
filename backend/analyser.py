@@ -3,6 +3,8 @@ from azure.core.credentials import AzureKeyCredential
 from dotenv import load_dotenv
 import os
 
+# Class used to define the basic building block of a transcription
+
 
 class Sentence:
     def __init__(self, text, startTime, endTime):
@@ -11,6 +13,7 @@ class Sentence:
         self.endTime = endTime
 
 
+# Class used to cover all the details of setting up and running a text analysis on a transcript
 class Analysis:
     def __init__(self, sentences):
         # Load client environement variables and authenticate the client
@@ -51,6 +54,8 @@ class Analysis:
             self.summary = self.summary + "\n" + text_summarization(
                 documents_to_analyze, client)
 
+# authenticates the application with Azure
+
 
 def authenticate_client(key, endpoint):
     ta_credential = AzureKeyCredential(key)
@@ -60,6 +65,7 @@ def authenticate_client(key, endpoint):
     return text_analytics_client
 
 
+# based on the inputted text documents returns a summary of the contents
 def text_summarization(documents, client):
     # Sets up object which till tell azure what actions to perform on the inputted documents
     poller = client.begin_analyze_actions(
@@ -82,6 +88,8 @@ def text_summarization(documents, client):
             return summary_result.message
     return summary
 
+# based on the inputted text documents returns a list of entities found within the documents
+
 
 def entity_linking(documents, client):
     try:
@@ -93,13 +101,18 @@ def entity_linking(documents, client):
         print("Encountered exception: {}".format(err))
         return err
 
+# returns a list of key phrases from a set of inputted documents
+
 
 def extract_key_phrases(documents, client):
     try:
+        # get the key phrases from azure
         response = client.extract_key_phrases(documents)[0]
         if not response.is_error:
+            # return the phrases if there was no errors
             return response.key_phrases
         else:
+            # print then return the error
             print(response.id, response.error)
             return response.error
     except Exception as err:

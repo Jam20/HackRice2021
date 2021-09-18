@@ -4,12 +4,14 @@ import os
 from analyser import Sentence
 
 
+# returns a wav formatted file given an mp4 input
 def mp4_2_wav(input, output):
     clip = mp.VideoFileClip(input)
     clip.audio.write_audiofile(output, ffmpeg_params=[
                                "-ac", "1"])  # Mono channel
 
 
+# uploads the file to the google blob
 def upload_2_bucket(bucket, source, destination):
     print("Uploading wav to GCP...")
     storage_client = storage.Client()
@@ -19,6 +21,7 @@ def upload_2_bucket(bucket, source, destination):
     print("File {} uploaded to {}.".format(source, destination))
 
 
+# gets a transcription formatted in sentences
 def get_transcription(uri):
     # Transcribe from GCP Bucket
     client = speech.SpeechClient()
@@ -35,9 +38,12 @@ def get_transcription(uri):
     print("Transcribing audio...")
     response = operation.result()
     print(response)
+
+    # map the raw response to the sentence data type
     return map(lambda result: Sentence(result.alternatives[0].transcript, result.alternatives[0].words[0].start_time, result.alternatives[0].words[-1].end_time), response.results)
 
 
+# write a file to the disk
 def write_2_disk(file_name, data):
     print("Writing transcript to disk...")
     with open(file_name, "w") as f:
@@ -45,6 +51,7 @@ def write_2_disk(file_name, data):
         print("Done writing to disk")
 
 
+# deletes temporary files
 def delete_temp(files):
     print("Deleting temporary files...")
     for file in files:

@@ -7,6 +7,7 @@ import List from '@mui/material/List'
 // import Avatar from '@mui/material/Avatar'
 // import Avatar from '@mui/material/Avatar'
 
+//Component used to display additional tracking information to the user including timestamps and other information
 function SideMenu() {
     const classes = {}
   
