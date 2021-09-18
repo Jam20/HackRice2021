@@ -49,11 +49,10 @@ class Analysis:
         self.key_phrases = []
         self.entities = []
         self.summary = ""
-
         # loop through each set of 5 documents as Azure only allows 5 documents per batch
-        for i in range(len(output_documents)//5):
+        for i in range(0, len(output_documents), 5):
             # Get a slice of the documents array from 0..5, 5..10
-            documents_to_analyze = output_documents[i*5:(i+5)]
+            documents_to_analyze = output_documents[i:min(len(output_documents), i + 5)]
 
             # append relevent processed data from Azure
             self.key_phrases.extend(extract_key_phrases(
