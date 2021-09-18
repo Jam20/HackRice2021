@@ -12,11 +12,12 @@ class Sentence:
         self.text = text
         self.startTime = startTime
         self.endTime = endTime
+
     def get_json(self):
         return {
-            'text':self.text,
-            'startTime':self.startTime,
-            'endTime':self.endTime
+            'text': self.text,
+            'startTime': self.startTime,
+            'endTime': self.endTime
         }
 
 
@@ -38,9 +39,11 @@ class Analysis:
             if len(current_document + sentence["text"]) > 5000:
                 # add the completed document to the list of documents to process
                 output_documents.append(current_document)
-                current_document = sentence["text"]  # reset current document
+                # reset current document
+                current_document = sentence["text"]
             else:
-                current_document = current_document + sentence["text"]
+                current_document = current_document + \
+                    sentence["text"]
         output_documents.append(current_document)
 
         self.key_phrases = []
@@ -59,11 +62,15 @@ class Analysis:
             self.summary = self.summary + "\n" + text_summarization(
                 documents_to_analyze, client)
         self.sentences = sentences
+
     def get_json(self):
         return {
             'sentences': self.sentences,
-            'key_phrases': self.key_phrases,
-            'entities': self.entities,
+            'key_phrases': [str(phrase) for phrase in self.key_phrases],
+            'entities': [{
+                "name": entity.name,
+                "url": entity.url,
+            } for entity in self.entities],
             'summary': self.summary,
         }
 
