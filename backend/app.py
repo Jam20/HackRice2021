@@ -1,6 +1,5 @@
 from flask import Flask, request
 from transcribe import transcribe_video
-import { FileDrop } from 'react-file-drop
 
 app = Flask(__name__)
 
