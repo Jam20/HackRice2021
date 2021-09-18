@@ -124,15 +124,29 @@ function HomeScreen(props) {
             setOpen(true);
           }}
         >
-          <p
+          <div
             style={{
-              color: "#3852BD",
-              fontFamily: "barlow",
-              fontWeight: "bold",
+              backgroundColor: "white",
+              borderRadius: 10,
+              width: 150,
+              height: 30,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+              zIndex: 2,
             }}
           >
-            Upload
-          </p>
+            <p
+              style={{
+                color: "#3852BD",
+                fontFamily: "barlow",
+                fontWeight: "bold",
+              }}
+            >
+              Upload
+            </p>
+          </div>
         </Button>
       )}
     </div>
