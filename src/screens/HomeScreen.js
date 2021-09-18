@@ -30,7 +30,9 @@ function HomeScreen(props) {
 
   //Function which runs when the uploaded file changes
   const onChangeFile = async (e) => {
-    const file = e.target.files[0];
+    if (e.length == 0) return;
+    const file = e[0];
+    console.log(file);
     setLoading(true);
     //format the file to the post request
     const formData = new FormData();
@@ -39,6 +41,7 @@ function HomeScreen(props) {
       method: "POST",
       body: formData,
     };
+    setOpen(false);
     //awaits a response from the python server
     let response = await fetch("http://localhost:5000/upload_video", options);
     //uses the prop function to send the response to the main page
@@ -61,10 +64,13 @@ function HomeScreen(props) {
       }}
       className="container"
     >
-      <Dialog onClose={handleClose} open={open}>
-        <DialogTitle>UploadFile</DialogTitle>
-        <DropzoneArea onChange={onChangeFile} />
+      <Dialog onClose={handleClose} open={open} maxWidth="lg">
+        <div className="dialogBox">
+          <DialogTitle className="dialogTitle">UploadFile</DialogTitle>
+          <DropzoneArea onChange={onChangeFile} />
+        </div>
       </Dialog>
+
       <img
         src={cube}
         style={{ position: "absolute", zIndex: 1, width: "100vw", bottom: 0 }}
@@ -118,15 +124,29 @@ function HomeScreen(props) {
             setOpen(true);
           }}
         >
-          <p
+          <div
             style={{
-              color: "#3852BD",
-              fontFamily: "barlow",
-              fontWeight: "bold",
+              backgroundColor: "white",
+              borderRadius: 10,
+              width: 150,
+              height: 30,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+              zIndex: 2,
             }}
           >
-            Upload
-          </p>
+            <p
+              style={{
+                color: "#3852BD",
+                fontFamily: "barlow",
+                fontWeight: "bold",
+              }}
+            >
+              Upload
+            </p>
+          </div>
         </Button>
       )}
     </div>

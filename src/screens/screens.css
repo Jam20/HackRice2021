@@ -25,11 +25,12 @@
   max-width: 320px;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1.25;
   height: 90vh;
   overflow: hidden;
   left: 0;
-  max-width: 280px;
+  min-width: 180px;
+  max-width: 380px;
   background-color: #12062D;
   opacity:1;
   transform:translateX(0%);
@@ -62,6 +63,7 @@
   letter-spacing: 1px;
   text-align: right;
   margin-left: 3rem;
+  cursor: pointer;
 }
 
 .button-text {
@@ -77,7 +79,7 @@
   transition:1s;
   opacity:0;
   transform:translateX(-100%);
-  flex:1
+  flex:1.25
 }
 
 a {

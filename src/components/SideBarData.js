@@ -1,7 +1,7 @@
 import React from 'react'
 import { Home } from '@mui/icons-material'
 
-//Random Data 
+export const message = require('./../message.json')
 export const SideBarNav = [
     {
         title:'Home',

@@ -17,8 +17,8 @@ const MainScreen = (props) => {
     return (
         <>
          <div className='top-bar'>
-            <text class="title-text">
-              Lorem Ipsum
+            <text class="title-text" onClick={()=>history.push('/home')}>
+              Summarizer
             </text>
             
             <Button
