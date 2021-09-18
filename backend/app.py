@@ -19,4 +19,4 @@ def upload_video():
     return {"transcript":transcribe_video(uploaded_file.filename, uploaded)}
     return {}   
 
-app.run("localhost", 3000, debug=True)
+app.run("localhost", 5000, debug=True)
