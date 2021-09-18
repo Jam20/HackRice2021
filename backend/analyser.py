@@ -7,7 +7,7 @@ import jsonpickle
 # Class used to define the basic building block of a transcription
 
 
-class Sentence:
+class Sentence(object):
     def __init__(self, text, startTime, endTime):
         self.text = text
         self.startTime = startTime
@@ -15,7 +15,7 @@ class Sentence:
 
 
 # Class used to cover all the details of setting up and running a text analysis on a transcript
-class Analysis:
+class Analysis(object):
     def __init__(self, sentences):
         # Load client environement variables and authenticate the client
         load_dotenv()
@@ -26,8 +26,6 @@ class Analysis:
         # setup before converting sentences to Azure document structure
         output_documents = []
         current_document = ""
-
-        self.sentences = sentences
 
         for sentence in sentences:
             # Azure requires that each document be under 5120 charecters
@@ -49,11 +47,12 @@ class Analysis:
             documents_to_analyze = output_documents[i*5:(i+5)]
 
             # append relevent processed data from Azure
-            self.key_phrases.append(extract_key_phrases(
+            self.key_phrases.extend(extract_key_phrases(
                 documents_to_analyze, client))
-            self.entities.append(entity_linking(documents_to_analyze, client))
+            self.entities.extend(entity_linking(documents_to_analyze, client))
             self.summary = self.summary + "\n" + text_summarization(
                 documents_to_analyze, client)
+        self.sentences = sentences
 
 
 # authenticates the application with Azure
@@ -120,7 +119,7 @@ def extract_key_phrases(documents, client):
 
 
 with open("message.txt") as file:
-    sentences = map(lambda text: Sentence(text, 0, 0), file.readlines())
+    sentences = list(map(lambda text: Sentence(text, 0, 0), file.readlines()))
     analysis = Analysis(sentences)
     with open("message.json", "w") as jsonFile:
         jsonFile.write(
