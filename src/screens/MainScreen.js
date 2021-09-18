@@ -1,21 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './screens.css'
 import SideMenu from '../components/SideMenu'
 import InfoContainer from '../components/InfoContainer'
 import { Button } from '@mui/material'
 import { useHistory } from 'react-router-dom'
-
+import MenuIcon from '@mui/icons-material/Menu';
 const MainScreen = (props) => {
     const history = useHistory()
-    const BUTTON_HEIGHT = 37.5
+    const BUTTON_HEIGHT = 37.5;
+    const [sidebar, setSidebar] = useState(true)
+    const pressSideBar = () =>{
+      setSidebar(!sidebar)
+    }
     /**prop analysis will give the current analysis to be displayed on the page. follows same format as python analysis object */
-
+    
     return (
         <>
          <div className='top-bar'>
             <text class="title-text">
-              Lorem pm
+              Lorem Ipsum
             </text>
+            
             <Button
               sx={{
                 background:'#1db954',
@@ -41,10 +46,23 @@ const MainScreen = (props) => {
           </div>
           <div className='container'>
                 <div className='wrapper'>
-                  <div className='left-section'>
+                
+                  <div className={
+                    sidebar ?'left-section' : 'sidebar-not-visible'
+                    }>
                     <SideMenu/>
                   </div>
-
+                  <a onClick={pressSideBar}>
+                    <MenuIcon
+                      sx={{
+                        color:'white',
+                        width:30,
+                        height:30,
+                        marginLeft:2,
+                        marginRight:2,
+                      }}
+                    />
+                  </a>
                   <div className="middle-right-section">
                     <InfoContainer/>
                   </div>

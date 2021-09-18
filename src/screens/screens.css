@@ -21,25 +21,30 @@
 }
 
 .left-section {
+  transition:1s;
   max-width: 320px;
-  border: solid green 1px;
   display: flex;
   flex-direction: column;
-  flex: 0.5;
+  flex: 1;
   height: 90vh;
   overflow: hidden;
   left: 0;
-  margin-right: auto;
-  max-width: 80px;
+  max-width: 280px;
+  background-color: #12062D;
+  opacity:1;
+  transform:translateX(0%);
+  box-shadow: 2px 90px 48px 6px #1DB954;
 }
 
 .middle-right-section {
+  transition:1s;
   border: solid purple 5px;
   display: flex;
   flex-direction: column;
   flex: 5;
   height: 90vh;
   width: 100%;
+  
 }
 
 .top-bar {
@@ -64,4 +69,19 @@
   font-weight: 700;
   letter-spacing: 1px;
   color: black;
+}
+
+
+
+.sidebar-not-visible {
+  transition:1s;
+  opacity:0;
+  transform:translateX(-100%);
+  flex:1
+}
+
+a {
+  text-decoration: none;
+  cursor:pointer;
+  margin:0 .2rem;
 }
