@@ -1,0 +1,12 @@
+.info-container {
+    margin:auto;
+    width:85%;
+    padding-right: 10px; 
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: left;
+    min-height: 525px;
+    background: #010101;
+    border-radius: .75rem;
+  }

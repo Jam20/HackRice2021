@@ -6,14 +6,16 @@ import {
   } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import HomeScreen from "./screens/HomeScreen" 
-
+import MainScreen from "./screens/MainScreen"
 
 function App() {
   const browserHistory = createBrowserHistory()
   return (
     <div className="App">
       <Router history={browserHistory}>
-        <Route  path='/' component={HomeScreen}/>
+        <Route exact path='/' component={HomeScreen}/>
+        <Route exact path='/home' component={HomeScreen}/>
+        <Route exact path='/main' component={MainScreen}/>
         {/* <Routes>
         <Route exact path='/' component={HomeScreen}/>
         <Route exact path='/home' component={HomeScreen}/>  
