@@ -24,7 +24,6 @@ const InfoContainerChild = ({ message }) => {
       regex = regex + `| (${entity.name})`;
       names.push(entity.name);
     });
-    console.log(regex);
     const parts = text.split(new RegExp(regex, "gi"));
 
     return (
@@ -70,7 +69,6 @@ const InfoContainerChild = ({ message }) => {
     );
   };
   let textObjects = [];
-  console.log(message.sentences instanceof Array);
   Array.prototype.forEach.call(message.sentences, (sentence) => {
     textObjects.push(
       <p>

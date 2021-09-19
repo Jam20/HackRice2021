@@ -3,15 +3,17 @@ File containing all the basic CSS classes used in displaying the general compone
 **/
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;700&display=swap");
 
+.player-wrapper {
+  margin-left: 16px;
+  margin-bottom: 16px;
+}
 .info-container {
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: left;
-  min-height: 525px;
   margin: 16px;
-  max-width: 40%;
   background: whitesmoke;
   overflow: scroll;
   overflow-x: hidden;

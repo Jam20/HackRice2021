@@ -1,17 +1,34 @@
 import React, { useRef, useState } from "react";
 import "./screens.css";
 import SideMenu from "../components/SideMenu";
-import InfoContainer  from "../components/InfoContainer";
-import { Button } from "@mui/material";
+import InfoContainer from "../components/InfoContainer";
+import { Button, TextField } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useReactToPrint } from "react-to-print";
+import ReactPlayer from "react-player";
 
-const MainScreen = ({data}) => {
+const MainScreen = ({ data, uri }) => {
   const history = useHistory();
   const BUTTON_HEIGHT = 37.5;
   const componentRef = useRef();
+  const videoRef = useRef();
   const handlePrint = useReactToPrint({ content: () => componentRef.current });
+  const [query, setQuery] = useState("")
+
+  const seekTrack = (number) => {
+    videoRef.current.seekTo(number)
+  }
+
+  const findTime = () => {
+    const q = query;
+    for(const sentence of data.sentences){
+      if(sentence.text.includes(q)){
+        seekTrack(parseInt(sentence.startTime));
+        break
+      }
+    }
+  }
 
   /**prop analysis will give the current analysis to be displayed on the page. follows same format as python analysis object */
 
@@ -23,13 +40,25 @@ const MainScreen = ({data}) => {
         </text>
       </div>
       <div className="wrapper">
-        <SideMenu summary={data.summary} />
-        <div style={{marginTop: 16, display: 'flex', flexDirection: 'column'}}>
+        <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', flex: 2 }}>
+          <SideMenu summary={data.summary} />
+          <div className='player-wrapper'>
+            <ReactPlayer
+              className='react-player fixed-bottom'
+              url={URL.createObjectURL(uri)}
+              width='100%'
+              ref={videoRef}
+              height='100%'
+              controls={true}
+            />
+          </div>
+        </div>
+        <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', flex: 1, alignItems: 'center', width: '94%' }}>
           <Button
             style={{
-              borderColor:'white',  
+              borderColor: 'white',
               borderWidth: 2,
-              borderStyle:'solid',
+              borderStyle: 'solid',
               padding: 16,
               width: 150,
               height: BUTTON_HEIGHT,
@@ -41,11 +70,19 @@ const MainScreen = ({data}) => {
           >
             <text className={"button-text"}>Export</text>
           </Button>
+          <TextField
+            label="Query"
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value)
+            }}
+            style={{ marginTop: 30, width: 150 }} />
+
           <Button
             style={{
-              borderColor:'white',  
+              borderColor: 'white',
               borderWidth: 2,
-              borderStyle:'solid',
+              borderStyle: 'solid',
               padding: 16,
               width: 150,
               height: BUTTON_HEIGHT,
@@ -53,7 +90,7 @@ const MainScreen = ({data}) => {
               marginRight: "3%",
               margin: 16
             }}
-            onClick={() => history.push("/home")}
+            onClick={findTime}
           >
             <text className={"button-text"}>Search</text>
           </Button>

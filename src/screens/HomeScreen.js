@@ -30,12 +30,13 @@ function HomeScreen() {
   const [loading, setLoading] = useState(false); //Sets the page to initially not be loading
   const [open, setOpen] = useState(false);
   const [data, setData] = useState(null);
+  const [uri, setUri] = useState("");
 
   //Function which runs when the uploaded file changes
   const onChangeFile = async (e) => {
     if (e.length == 0) return;
     const file = e[0];
-    console.log(file);
+    setUri(file)
     setLoading(true);
     //format the file to the post request
     const formData = new FormData();
@@ -116,9 +117,10 @@ function HomeScreen() {
       </div>
       <p
         style={{
-          color: "white",
+          color: "lightgray",
           fontFamily: "barlow",
           zIndex: 2,
+
         }}
         className="fade-in"
       >
@@ -192,7 +194,7 @@ function HomeScreen() {
       </div>
     </div>
   );
-  return data ? <MainScreen data={data} /> : getHomeScreen();
+  return data ? <MainScreen data={data} uri={uri}/> : getHomeScreen();
 }
 
 export default HomeScreen;
