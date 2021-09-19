@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./screens.css";
 import SideMenu from "../components/SideMenu";
-import { InfoContainerWraper } from "../components/InfoContainer";
+import InfoContainer  from "../components/InfoContainer";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
