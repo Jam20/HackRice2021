@@ -62,6 +62,7 @@ function HomeScreen(props) {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        overflow:'hidden'
       }}
       className="container"
     >
@@ -74,7 +75,9 @@ function HomeScreen(props) {
             maxFileSize={2000000000}
             dropzoneText={"Drop a video here"}
             acceptedFiles={['video/*']}
-            style={{ minWidth: '50vw' }} />
+            sx={{
+              marginHorizontal:5
+            }} />
         </div>
       </Dialog>
 
@@ -147,7 +150,6 @@ function HomeScreen(props) {
         >
           <div
             style={{
-              backgroundColor: "white",
               borderRadius: 10,
               width: 150,
               height: 30,
@@ -157,10 +159,10 @@ function HomeScreen(props) {
               cursor: "pointer",
               zIndex: 2,
             }}
+            className='btn'
           >
             <p
               style={{
-                color: "#3852BD",
                 fontFamily: "barlow",
                 fontWeight: "bold",
               }}

@@ -64,7 +64,16 @@ li #title {
 
 .sidebar {
   overflow: hidden;
-  overflow-y: scroll;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuButton {
+  width: min-content;
+  display: flex;
+  align-content: flex-start;
+  flex-grow: 1;
 }
 
 .timestamp {
@@ -75,4 +84,45 @@ li #title {
 
 .timestamp:hover {
   cursor: pointer;
+}
+
+.sidebar-not-visible {
+  transition: 1s;
+  max-width: 0vw;
+  height: auto;
+  overflow: hidden;
+  margin: 3%;
+  box-shadow: none;
+  transform: translateX(-100%);
+}
+
+.left-section {
+  transition: 1s;
+  max-width: 30vw;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  overflow: hidden;
+  left: 0;
+  opacity: 1;
+  transform: translateX(0%);
+  box-shadow: 0px 30px 50px 30px #00000093;
+  margin: 3%;
+}
+
+.middle-right-section {
+  transition: 1s;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 90vh;
+  width: 100%;
+  margin-top: 2%;
+}
+
+.summaryPanel {
+}
+
+.timePanel {
+  margin-top: 2%;
 }

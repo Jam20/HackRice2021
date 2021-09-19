@@ -26,9 +26,9 @@ const InfoContainer = (props) => {
           let style = {};
           if (keyPhrases.indexOf(part) > -1) {
             style = {
-              //fontWeight: "bold",
-              color: "red",
-              textDecoration: "underline",
+              fontWeight: "bold",
+              color: "#ff2020",
+              textDecoration: "none",
             };
           }
           if (names.indexOf(part) > -1) {
