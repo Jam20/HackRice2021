@@ -105,7 +105,7 @@ function HomeScreen() {
             fontWeight: 100,
             fontSize: 100,
             marginVertical: 0,
-            color: "white",
+            color: "lightgray",
             fontFamily: "barlow",
             letterSpacing: 2,
           }}

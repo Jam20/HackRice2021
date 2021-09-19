@@ -99,6 +99,7 @@ body {
   position: absolute;
   top: 3%;
   width: 100vw;
+  z-index: 1;
 }
 .cloud {
   background: #fff;
