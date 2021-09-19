@@ -2,7 +2,7 @@ import React from "react";
 import "./components.css";
 
 
-const InfoContainer = ({message}) => {
+const InfoContainer = ({ message }) => {
   const BUTTON_HEIGHT = 37.5;
   const analysis = message; //props.analysis;
 
@@ -75,11 +75,15 @@ const InfoContainer = ({message}) => {
 
   return (
     <div className="info-container">
+      <text style={{
+        fontFamily: 'barlow',
+        fontSize: 30,
+      }}>Transcript</text>
+
       <text
         style={{
           color: "black",
           fontSize: 18,
-          marginTop: "2%",
         }}
       >
         {textObjects}
