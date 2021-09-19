@@ -5,7 +5,8 @@
     rgba(53, 99, 201, 1) 35%,
     rgba(58, 75, 181, 1) 100%
   );
-  overflow:hidden;
+  overflow: hidden;
+  z-index: -2;
 }
 
 .dialogBox {
@@ -13,98 +14,96 @@
   align-self: center;
   overflow: hidden;
   background-color: #3a4ab59d;
-  
 }
 .dialogTitle {
   text-align: center;
   font-weight: "bold";
-  
 }
 .dialog-fade-in {
-  animation: fadeIn 1s
+  animation: fadeIn 1s;
 }
 .fade-in {
   animation: fadeIn 3s;
 }
 
 .btn {
-  transition:1s;
+  transition: 1s;
   background: white;
 }
 
-.btn p{
-  transition:1s;
-  color: #3563C9;
-  width:100%;
-  height:100%;
-  border-radius: .35rem;
+.btn p {
+  transition: 1s;
+  color: #3563c9;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.35rem;
 }
 
 .btn p:hover {
-  transition:1s;
+  transition: 1s;
   color: white;
 }
 
 .btn:hover {
-  transition:1s;
-  background: #3563C9;
+  transition: 1s;
+  background: #3563c9;
 }
 
 .img-pop-in {
-  overflow:hidden;
-  animation:popIn 2s;
+  overflow: hidden;
+  animation: popIn 2s;
 }
-
-
 
 .typewriter h1 {
   overflow: hidden;
-  border-right: solid 3px #1DB954
- 
+  border-right: solid 3px #1db954;
 }
 
 .typewriter h1 {
-  animation: typing 1.5s steps(30,end) .1s 1 normal both, cursor 1s steps(30,end) 5;
-  border-color:transparent;
+  animation: typing 1.5s steps(30, end) 0.1s 1 normal both,
+    cursor 1s steps(30, end) 5;
+  border-color: transparent;
 }
 
 @keyframes typing {
-  from{
-    width: 0; opacity:0
+  from {
+    width: 0;
+    opacity: 0;
   }
-  
-  to{
-    width: 572px; opacity:1
+
+  to {
+    width: 572px;
+    opacity: 1;
   }
 }
 
-
 @keyframes cursor {
-
-  from{
-    border-right-color: #1DB954;
+  from {
+    border-right-color: #1db954;
   }
 
-  to{
+  to {
     border-right-color: transparent;
   }
 }
 
 @keyframes fadeIn {
-  0% {opacity:0;}
-  100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes popIn {
-  
   0% {
-    overflow:hidden;
+    overflow: hidden;
     transform: translateY(75%);
-    opacity:0;
+    opacity: 0;
   }
   100% {
-    transform:translateY(0%);
-    opacity:1;
+    transform: translateY(0%);
+    opacity: 1;
   }
 }
-
