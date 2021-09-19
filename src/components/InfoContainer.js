@@ -2,9 +2,12 @@ import { React, Component } from "react";
 import "./components.css";
 
 class InfoContainer extends Component {
+  constructor(props){
+    super(props)
+  }
   render(){
     return(
-      <InfoContainerChild />
+      <InfoContainerChild message={this.props.message}/>
     )
   }
 }
