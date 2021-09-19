@@ -18,6 +18,7 @@
 .dialogTitle {
   text-align: center;
   font-weight: "bold";
+  
 }
 .dialog-fade-in {
   animation: fadeIn 1s
@@ -53,6 +54,42 @@
   overflow:hidden;
   animation:popIn 2s;
 }
+
+
+
+.typewriter h1 {
+  overflow: hidden;
+  border-right: solid 3px #1DB954
+ 
+}
+
+.typewriter h1 {
+  animation: typing 1.5s steps(30,end) .1s 1 normal both, cursor 1s steps(30,end) 5;
+  border-color:transparent;
+}
+
+@keyframes typing {
+  from{
+    width: 0; opacity:0
+  }
+  
+  to{
+    width: 572px; opacity:1
+  }
+}
+
+
+@keyframes cursor {
+
+  from{
+    border-right-color: #1DB954;
+  }
+
+  to{
+    border-right-color: transparent;
+  }
+}
+
 @keyframes fadeIn {
   0% {opacity:0;}
   100% {opacity:1;}
