@@ -1,14 +1,18 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from transcribe import transcribe_video
 from analyser import Analysis
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def index():
     return "Hello World"
-
-
+    
 @app.route("/upload_video", methods=['POST'])
+@cross_origin()
+
 def upload_video():
     # ensures the requested file is present
     if 'file' not in request.files:
