@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./screens.css";
 import SideMenu from "../components/SideMenu";
-import InfoContainer from "../components/InfoContainer";
+import { InfoContainerWraper } from "../components/InfoContainer";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-const MainScreen = ({ data }) => {
+import { useReactToPrint } from "react-to-print";
+
+const MainScreen = ({data}) => {
   const history = useHistory();
   const BUTTON_HEIGHT = 37.5;
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({ content: () => componentRef.current });
+
   /**prop analysis will give the current analysis to be displayed on the page. follows same format as python analysis object */
 
   return (
@@ -32,7 +37,7 @@ const MainScreen = ({ data }) => {
               marginRight: "3%",
               margin: 16
             }}
-            onClick={() => history.push("/home")}
+            onClick={handlePrint}
           >
             <text className={"button-text"}>Export</text>
           </Button>
@@ -53,7 +58,7 @@ const MainScreen = ({ data }) => {
             <text className={"button-text"}>Search</text>
           </Button>
         </div>
-        <InfoContainer message={data} />
+        <InfoContainer message={data} ref={componentRef} />
       </div>
     </>
   );

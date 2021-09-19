@@ -1,8 +1,15 @@
-import React from "react";
+import { React, Component } from "react";
 import "./components.css";
 
+class InfoContainer extends Component {
+  render(){
+    return(
+      <InfoContainerChild />
+    )
+  }
+}
 
-const InfoContainer = ({ message }) => {
+const InfoContainerChild = ({ message }) => {
   const BUTTON_HEIGHT = 37.5;
   const analysis = message; //props.analysis;
 
