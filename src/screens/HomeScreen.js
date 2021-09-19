@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./styles.css";
+import "./clouds.css";
 import cube from "../assets/cube.png";
 import { css } from "@emotion/react";
 import ScaleLoader from "react-spinners/ScaleLoader";
@@ -41,10 +42,13 @@ function HomeScreen(props) {
     setOpen(false);
     //awaits a response from the python server
     try {
-      let json = await axios.post("http://localhost:5000/upload_video", formData);
-      console.log(json)
+      let json = await axios.post(
+        "http://localhost:5000/upload_video",
+        formData
+      );
+      console.log(json);
     } catch (e) {
-      console.log(e)
+      console.log(e);
     } finally {
       setLoading(false);
     }
@@ -62,22 +66,28 @@ function HomeScreen(props) {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        overflow:'hidden'
+        overflow: "hidden",
       }}
       className="container"
     >
-      <Dialog onClose={handleClose} open={open} maxWidth="lg" className='dialog-fade-in'>
-        <div style={{ minWidth: '50vw' }}>
+      <Dialog
+        onClose={handleClose}
+        open={open}
+        maxWidth="lg"
+        className="dialog-fade-in"
+      >
+        <div style={{ minWidth: "50vw" }}>
           <DialogTitle className="dialogTitle">Upload A File</DialogTitle>
           <DropzoneArea
             onChange={onChangeFile}
             filesLimit={1}
             maxFileSize={2000000000}
             dropzoneText={"Drop a video here"}
-            acceptedFiles={['video/*']}
+            acceptedFiles={["video/*"]}
             sx={{
-              marginHorizontal:5
-            }} />
+              marginHorizontal: 5,
+            }}
+          />
         </div>
       </Dialog>
 
@@ -87,11 +97,11 @@ function HomeScreen(props) {
           position: "absolute",
           zIndex: 1,
           width: "100vw",
-          bottom: 0
+          bottom: 0,
         }}
-        className={'img-pop-in'}
+        className={"img-pop-in"}
       />
-      <div className="typewriter">
+      <div className="typewriter" style={{ zIndex: 2, position: "relative" }}>
         <h1
           style={{
             fontWeight: 100,
@@ -99,20 +109,20 @@ function HomeScreen(props) {
             marginVertical: 0,
             color: "white",
             fontFamily: "barlow",
-            zIndex: 2,
-            letterSpacing:2
+            letterSpacing: 2,
           }}
-          className='fade-in'
+          className="fade-in"
         >
           Summarizer
         </h1>
       </div>
-      <p style={{ 
-        color: "white",
-        fontFamily: "barlow",
-        zIndex: 2
-      }}
-        className='fade-in'
+      <p
+        style={{
+          color: "white",
+          fontFamily: "barlow",
+          zIndex: 2,
+        }}
+        className="fade-in"
       >
         Give your ears a break
       </p>
@@ -149,7 +159,7 @@ function HomeScreen(props) {
           onClick={() => {
             setOpen(true);
           }}
-          className='fade-in'
+          className="fade-in"
         >
           <div
             style={{
@@ -162,7 +172,7 @@ function HomeScreen(props) {
               cursor: "pointer",
               zIndex: 2,
             }}
-            className='btn'
+            className="btn"
           >
             <p
               style={{
@@ -175,6 +185,13 @@ function HomeScreen(props) {
           </div>
         </Button>
       )}
+      <div id="clouds">
+        <div className="cloud x1"></div>
+        <div className="cloud x2"></div>
+        <div className="cloud x3"></div>
+        <div className="cloud x4"></div>
+        <div className="cloud x5"></div>
+      </div>
     </div>
   );
 }
