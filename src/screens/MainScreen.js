@@ -14,21 +14,21 @@ const MainScreen = ({ data, uri }) => {
   const componentRef = useRef();
   const videoRef = useRef();
   const handlePrint = useReactToPrint({ content: () => componentRef.current });
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState("");
 
   const seekTrack = (number) => {
-    videoRef.current.seekTo(number)
-  }
+    videoRef.current.seekTo(number);
+  };
 
   const findTime = () => {
     const q = query;
-    for(const sentence of data.sentences){
-      if(sentence.text.includes(q)){
+    for (const sentence of data.sentences) {
+      if (sentence.text.includes(q)) {
         seekTrack(parseInt(sentence.startTime));
-        break
+        break;
       }
     }
-  }
+  };
 
   /**prop analysis will give the current analysis to be displayed on the page. follows same format as python analysis object */
 
@@ -36,35 +36,51 @@ const MainScreen = ({ data, uri }) => {
     <>
       <div className="top-bar">
         <text class="title-text" onClick={() => history.push("/home")}>
-          Summarizer
+          Sumo
         </text>
       </div>
       <div className="wrapper">
-        <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', flex: 2 }}>
+        <div
+          style={{
+            marginTop: 16,
+            display: "flex",
+            flexDirection: "column",
+            flex: 2,
+          }}
+        >
           <SideMenu summary={data.summary} />
-          <div className='player-wrapper'>
+          <div className="player-wrapper">
             <ReactPlayer
-              className='react-player fixed-bottom'
+              className="react-player fixed-bottom"
               url={URL.createObjectURL(uri)}
-              width='100%'
+              width="100%"
               ref={videoRef}
-              height='100%'
+              height="100%"
               controls={true}
             />
           </div>
         </div>
-        <div style={{ marginTop: 16, display: 'flex', flexDirection: 'column', flex: 1, alignItems: 'center', width: '94%' }}>
+        <div
+          style={{
+            marginTop: 16,
+            display: "flex",
+            flexDirection: "column",
+            flex: 1,
+            alignItems: "center",
+            width: "94%",
+          }}
+        >
           <Button
             style={{
-              borderColor: 'white',
+              borderColor: "white",
               borderWidth: 2,
-              borderStyle: 'solid',
+              borderStyle: "solid",
               padding: 16,
               width: 150,
               height: BUTTON_HEIGHT,
               marginLeft: "auto",
               marginRight: "3%",
-              margin: 16
+              margin: 16,
             }}
             onClick={handlePrint}
           >
@@ -74,21 +90,22 @@ const MainScreen = ({ data, uri }) => {
             label="Query"
             value={query}
             onChange={(event) => {
-              setQuery(event.target.value)
+              setQuery(event.target.value);
             }}
-            style={{ marginTop: 30, width: 150 }} />
+            style={{ marginTop: 30, width: 150 }}
+          />
 
           <Button
             style={{
-              borderColor: 'white',
+              borderColor: "white",
               borderWidth: 2,
-              borderStyle: 'solid',
+              borderStyle: "solid",
               padding: 16,
               width: 150,
               height: BUTTON_HEIGHT,
               marginLeft: "auto",
               marginRight: "3%",
-              margin: 16
+              margin: 16,
             }}
             onClick={findTime}
           >

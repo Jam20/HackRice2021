@@ -36,7 +36,7 @@ function HomeScreen() {
   const onChangeFile = async (e) => {
     if (e.length == 0) return;
     const file = e[0];
-    setUri(file)
+    setUri(file);
     setLoading(true);
     //format the file to the post request
     const formData = new FormData();
@@ -44,8 +44,11 @@ function HomeScreen() {
     setOpen(false);
     //awaits a response from the python server
     try {
-      let json = await axios.post("https://561d-73-226-236-194.ngrok.io/upload_video", formData);
-      setData(json.data.analysis)
+      let json = await axios.post(
+        "https://561d-73-226-236-194.ngrok.io/upload_video",
+        formData
+      );
+      setData(json.data.analysis);
     } catch (e) {
       console.log(e);
     } finally {
@@ -104,7 +107,7 @@ function HomeScreen() {
         <h1
           style={{
             fontWeight: 100,
-            fontSize: 100,
+            fontSize: 150,
             marginVertical: 0,
             color: "lightgray",
             fontFamily: "barlow",
@@ -112,7 +115,7 @@ function HomeScreen() {
           }}
           className="fade-in"
         >
-          Summarizer
+          Sumo
         </h1>
       </div>
       <p
@@ -120,7 +123,6 @@ function HomeScreen() {
           color: "lightgray",
           fontFamily: "barlow",
           zIndex: 2,
-
         }}
         className="fade-in"
       >
@@ -194,7 +196,7 @@ function HomeScreen() {
       </div>
     </div>
   );
-  return data ? <MainScreen data={data} uri={uri}/> : getHomeScreen();
+  return data ? <MainScreen data={data} uri={uri} /> : getHomeScreen();
 }
 
 export default HomeScreen;
