@@ -1,9 +1,14 @@
-import React from "react";
+import { React, Component } from "react";
 import "./components.css";
-
 import { Button } from "@mui/material";
 import { message } from "./SideBarData";
 import { black } from "jest-matcher-utils/node_modules/chalk";
+
+export class InfoContainerWraper extends Component {
+  render() {
+    return <InfoContainer />;
+  }
+}
 const InfoContainer = (props) => {
   const BUTTON_HEIGHT = 37.5;
   const analysis = message; //props.analysis;
