@@ -61,13 +61,18 @@ function HomeScreen(props) {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        overflow:'hidden'
       }}
       className="container"
     >
-      <Dialog onClose={handleClose} open={open} maxWidth="lg" className='dialog-fade-in'>
+      <Dialog onClose={handleClose} open={open} maxWidth="lg" className='dialog-fade-in'
+      >
         <div>
           <DialogTitle className="dialogTitle">UploadFile</DialogTitle>
-          <DropzoneArea onChange={onChangeFile} />
+          <DropzoneArea onChange={onChangeFile} 
+          sx={{
+            marginHorizontal:5
+          }}/>
         </div>
       </Dialog>
 
@@ -140,7 +145,6 @@ function HomeScreen(props) {
         >
           <div
             style={{
-              backgroundColor: "white",
               borderRadius: 10,
               width: 150,
               height: 30,
@@ -150,10 +154,10 @@ function HomeScreen(props) {
               cursor: "pointer",
               zIndex: 2,
             }}
+            className='btn'
           >
             <p
               style={{
-                color: "#3852BD",
                 fontFamily: "barlow",
                 fontWeight: "bold",
               }}
