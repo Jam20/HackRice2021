@@ -5,7 +5,7 @@ import InfoContainer from "../components/InfoContainer";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-const MainScreen = (props) => {
+const MainScreen = ({data}) => {
   const history = useHistory();
   const BUTTON_HEIGHT = 37.5;
   /**prop analysis will give the current analysis to be displayed on the page. follows same format as python analysis object */
@@ -41,10 +41,10 @@ const MainScreen = (props) => {
       <div className="container">
         <div className="wrapper">
           <div>
-            <SideMenu />
+            <SideMenu summary={data.summary}/>
           </div>
           <div className="middle-right-section">
-            <InfoContainer />
+            <InfoContainer message={data} />
           </div>
         </div>
       </div>

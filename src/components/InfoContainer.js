@@ -1,10 +1,8 @@
 import React from "react";
 import "./components.css";
 
-import { Button } from "@mui/material";
-import { message } from "./SideBarData";
-import { black } from "jest-matcher-utils/node_modules/chalk";
-const InfoContainer = (props) => {
+
+const InfoContainer = ({message}) => {
   const BUTTON_HEIGHT = 37.5;
   const analysis = message; //props.analysis;
 
