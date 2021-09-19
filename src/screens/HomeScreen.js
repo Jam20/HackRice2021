@@ -45,7 +45,7 @@ function HomeScreen() {
     //awaits a response from the python server
     try {
       let json = await axios.post(
-        "https://561d-73-226-236-194.ngrok.io/upload_video",
+        "https://584f-73-226-236-194.ngrok.io/upload_video",
         formData
       );
       setData(json.data.analysis);
