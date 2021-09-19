@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import { Button, DialogTitle } from "@mui/material";
 import { DropzoneArea } from "material-ui-dropzone";
+import axios from "axios";
 const override = css`
   display: block;
   margin: 0 auto;
@@ -37,16 +38,16 @@ function HomeScreen(props) {
     //format the file to the post request
     const formData = new FormData();
     formData.append("file", file);
-    const options = {
-      method: "POST",
-      body: formData,
-    };
     setOpen(false);
     //awaits a response from the python server
-    let response = await fetch("http://localhost:5000/upload_video", options);
-    //uses the prop function to send the response to the main page
-    //props.onChangeFile(response);
-    setLoading(false);
+    try {
+      let json = await axios.post("http://localhost:5000/upload_video", formData);
+      console.log(json)
+    } catch (e) {
+      console.log(e)
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleClose = () => {
@@ -65,21 +66,27 @@ function HomeScreen(props) {
       className="container"
     >
       <Dialog onClose={handleClose} open={open} maxWidth="lg" className='dialog-fade-in'>
-        <div>
-          <DialogTitle className="dialogTitle">UploadFile</DialogTitle>
-          <DropzoneArea onChange={onChangeFile} />
+        <div style={{ minWidth: '50vw' }}>
+          <DialogTitle className="dialogTitle">Upload A File</DialogTitle>
+          <DropzoneArea
+            onChange={onChangeFile}
+            filesLimit={1}
+            maxFileSize={2000000000}
+            dropzoneText={"Drop a video here"}
+            acceptedFiles={['video/*']}
+            style={{ minWidth: '50vw' }} />
         </div>
       </Dialog>
 
       <img
         src={cube}
-        style={{ 
+        style={{
           position: "absolute",
           zIndex: 1,
           width: "100vw",
           bottom: 0
-         }}
-         className={ 'img-pop-in' }
+        }}
+        className={'img-pop-in'}
       />
       <p
         style={{
@@ -94,12 +101,12 @@ function HomeScreen(props) {
       >
         Summarizer
       </p>
-      <p style={{ 
+      <p style={{
         color: "white",
         fontFamily: "barlow",
         zIndex: 2
-       }}
-      className='fade-in'
+      }}
+        className='fade-in'
       >
         Give your ears a break
       </p>
@@ -114,7 +121,7 @@ function HomeScreen(props) {
           />
 
           <p style={{ zIndex: 5, paddingTop: 8 }}>
-            <TextLoop delay={5000}>
+            <TextLoop delay={10000}>
               {phrases.map((phrase) => (
                 <p
                   style={{
