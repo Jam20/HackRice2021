@@ -92,20 +92,23 @@ function HomeScreen() {
         }}
         className={'img-pop-in'}
       />
-      <p
-        style={{
-          fontWeight: "bold",
-          fontSize: 100,
-          marginVertical: 0,
-          color: "white",
-          fontFamily: "barlow",
-          zIndex: 2,
-        }}
-        className='fade-in'
-      >
-        Summarizer
-      </p>
-      <p style={{
+      <div className="typewriter">
+        <h1
+          style={{
+            fontWeight: 100,
+            fontSize: 100,
+            marginVertical: 0,
+            color: "white",
+            fontFamily: "barlow",
+            zIndex: 2,
+            letterSpacing:2
+          }}
+          className='fade-in'
+        >
+          Summarizer
+        </h1>
+      </div>
+      <p style={{ 
         color: "white",
         fontFamily: "barlow",
         zIndex: 2
