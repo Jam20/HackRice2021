@@ -147,6 +147,8 @@ function HomeScreen() {
                     fontFamily: "barlow",
                     zIndex: 2,
                     fontSize: 20,
+                    animation: "none",
+                    marginLeft: 0,
                   }}
                 >
                   {phrase}
@@ -188,11 +190,11 @@ function HomeScreen() {
         </Button>
       )}
       <div id="clouds">
-        <div className="cloud x1"></div>
-        <div className="cloud x2"></div>
-        <div className="cloud x3"></div>
-        <div className="cloud x4"></div>
-        <div className="cloud x5"></div>
+        <div className="cloud cx1"></div>
+        <div className="cloud cx2"></div>
+        <div className="cloud cx3"></div>
+        <div className="cloud cx4"></div>
+        <div className="cloud cx5"></div>
       </div>
     </div>
   );

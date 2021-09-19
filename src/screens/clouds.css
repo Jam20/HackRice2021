@@ -39,7 +39,7 @@ body {
 
 /* ANIMATIONS */
 
-.x1 {
+.cx1 {
   -webkit-animation: animateCloud 35s linear infinite;
   -moz-animation: animateCloud 35s linear infinite;
   animation: animateCloud 35s linear infinite;
@@ -50,7 +50,7 @@ body {
   z-index: 0;
 }
 
-.x2 {
+.cx2 {
   -webkit-animation: animateCloud 20s linear infinite;
   -moz-animation: animateCloud 20s linear infinite;
   animation: animateCloud 20s linear infinite;
@@ -61,7 +61,7 @@ body {
   z-index: 0;
 }
 
-.x3 {
+.cx3 {
   -webkit-animation: animateCloud 30s linear infinite;
   -moz-animation: animateCloud 30s linear infinite;
   animation: animateCloud 30s linear infinite;
@@ -72,7 +72,7 @@ body {
   z-index: 0;
 }
 
-.x4 {
+.cx4 {
   -webkit-animation: animateCloud 18s linear infinite;
   -moz-animation: animateCloud 18s linear infinite;
   animation: animateCloud 18s linear infinite;
@@ -83,7 +83,7 @@ body {
   z-index: 0;
 }
 
-.x5 {
+.cx5 {
   -webkit-animation: animateCloud 25s linear infinite;
   -moz-animation: animateCloud 25s linear infinite;
   animation: animateCloud 25s linear infinite;
