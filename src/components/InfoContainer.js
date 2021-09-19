@@ -1,15 +1,15 @@
 import { React, Component } from "react";
 import "./components.css";
-import { Button } from "@mui/material";
-import { message } from "./SideBarData";
-import { black } from "jest-matcher-utils/node_modules/chalk";
 
-export class InfoContainerWraper extends Component {
-  render() {
-    return <InfoContainer />;
+class InfoContainer extends Component {
+  render(){
+    return(
+      <InfoContainerChild />
+    )
   }
 }
-const InfoContainer = (props) => {
+
+const InfoContainerChild = ({ message }) => {
   const BUTTON_HEIGHT = 37.5;
   const analysis = message; //props.analysis;
 
@@ -82,11 +82,15 @@ const InfoContainer = (props) => {
 
   return (
     <div className="info-container">
+      <text style={{
+        fontFamily: 'barlow',
+        fontSize: 30,
+      }}>Transcript</text>
+
       <text
         style={{
           color: "black",
           fontSize: 18,
-          marginTop: "2%",
         }}
       >
         {textObjects}

@@ -1,21 +1,32 @@
 /**
 File containing all the basic CSS classes used in displaying the general components of the project
 **/
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;700&display=swap");
 
 .info-container {
-  margin: auto;
-  width: 85%;
-  padding-right: 10px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: left;
   min-height: 525px;
+  margin: 16px;
+  max-width: 40%;
   background: whitesmoke;
-  border-radius: 0.75rem;
   overflow: scroll;
+  overflow-x: hidden;
+  font-family: barlow;
+  border-radius: 5px
+}
+.info-container::-webkit-scrollbar {
+  width: 8px;
+  margin-right: 2px;
 }
 
+.info-container::-webkit-scrollbar-thumb {
+  background-color: lightgray;
+  border-radius: 100px;
+}
 li {
   width: 100%;
   margin: 0.35rem 0;

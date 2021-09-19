@@ -10,6 +10,7 @@ import Dialog from "@mui/material/Dialog";
 import { Button, DialogTitle } from "@mui/material";
 import { DropzoneArea } from "material-ui-dropzone";
 import axios from "axios";
+import MainScreen from "./MainScreen";
 const override = css`
   display: block;
   margin: 0 auto;
@@ -24,11 +25,11 @@ const phrases = [
   "Solving world peace...",
   "Maybe this will work...",
 ];
-function HomeScreen(props) {
+function HomeScreen() {
   //const inputFile = useRef(null);
   const [loading, setLoading] = useState(false); //Sets the page to initially not be loading
   const [open, setOpen] = useState(false);
-  const history = useHistory();
+  const [data, setData] = useState(null);
 
   //Function which runs when the uploaded file changes
   const onChangeFile = async (e) => {
@@ -43,10 +44,10 @@ function HomeScreen(props) {
     //awaits a response from the python server
     try {
       let json = await axios.post(
-        "http://localhost:5000/upload_video",
+        "https://561d-73-226-236-194.ngrok.io/upload_video",
         formData
       );
-      console.log(json);
+      setData(json.analysis);
     } catch (e) {
       console.log(e);
     } finally {
@@ -58,7 +59,7 @@ function HomeScreen(props) {
     setOpen(false);
   };
   //Returns the generalized HTML output of the component
-  return (
+  const getHomeScreen = () => (
     <div
       style={{
         display: "flex",
@@ -194,6 +195,7 @@ function HomeScreen(props) {
       </div>
     </div>
   );
+  return data ? <MainScreen data={data} /> : getHomeScreen();
 }
 
 export default HomeScreen;
